@@ -21,7 +21,7 @@ that as you work your way thorugh these scripts.
 3. Create at least one intermedaite certificate authority: `bin/create_intermedates.sh ServerIntermediate`
 4. Create your first certificate:  `bin/create_certificate.sh ServerIntermediate test usr_cert`
 
-You can create your own key and csr then copy that into the intermedaite/NAME/csrs directory then just run step 3.  If you run step three without a CSR, it will create a key for you.
+You can create your own key and csr then copy that into the intermedaite/NAME/csr directory then just run step 3.  If you run step four without a CSR, it will create a key for you in the intermedaite/NAME/private directoy.
 
 You can revoke certificates with: `bin/revoke_certificate.sh ServerIntermediate test-cert`  (It's left up to you to distribute that CRL.)
 
