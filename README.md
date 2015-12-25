@@ -6,6 +6,8 @@ The goal of this is to create the root certificate authority.  Then create multi
 
 They support revoking certificates.  For instance, you would use this to revoke a certificate issued to a user to log into your server.
 
+There is also support files for generating CSRs will multiple subjectAltName entries in the manual-cert-generation/readme.txt file.  You can use this to make a certificate that is valid for mutliple DNS names.
+
 They are bascially taken directly from
 
 https://jamielinux.com/docs/openssl-certificate-authority/index.html
