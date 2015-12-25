@@ -27,12 +27,14 @@ if [ ! -f $DIR/csr/$NAME.csr.pem ]; then
 	fi
 
 	# Create the key
+	echo "You will be asked for a new passphrase for the new key"
 	openssl genrsa -aes256 -out $DIR/private/$NAME.key.pem 2048
 
 	# Protect it
 	chmod 400 $DIR/private/$NAME.key.pem
 
 	# Now create a Certificate and CSR for this key
+	echo "You will be asked for the passphrase for the new key"
 	openssl req -config $DIR/openssl.cnf \
 		-key $DIR/private/$NAME.key.pem \
 		-new -sha256 -out $DIR/csr/$NAME.csr.pem
@@ -43,6 +45,7 @@ if [ ! -f $DIR/csr/$NAME.csr.pem ]; then
 fi
 
 # Sign the certificate
+echo "You will be asked for the intermediate CA passphrase"
 openssl ca -config $DIR/openssl.cnf \
       -extensions $TYPE -days 9995 -notext -md sha256 \
       -in $DIR/csr/$NAME.csr.pem \

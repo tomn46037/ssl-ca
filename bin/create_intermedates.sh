@@ -34,15 +34,18 @@ echo 1000 > $DIR/crlnumber
 cat openssl-intermedate-template.cnf | sed s^__DIR__^${DIR}^ | sed s^__INTERMEDIATE_NAME__^$INTERMEDIATE_NAME^ > $DIR/openssl.cnf
 
 # Create the Intermdiate key
+echo "You will be asked for a new passphrase for the intermediate key"
 openssl genrsa -aes256 -out $DIR/private/$INTERMEDIATE_NAME.key.pem 4096
 
 # Protect it
 chmod 400 $DIR/private/$INTERMEDIATE_NAME.key.pem
 
 # Create the Intermediate Certificate Siging Request
+echo "You will be asked for the intermedaite key passphrase"
 openssl req -config $DIR/openssl.cnf -new -sha256 -key $DIR/private/$INTERMEDIATE_NAME.key.pem -out $DIR/csr/$INTERMEDIATE_NAME.csr.pem
 
 # Create the Intermedate Certificate 
+echo "You will be asked for the ROOT CA passphrase"
 openssl ca -config openssl.cnf -extensions v3_intermediate_ca \
 	-days 3650 -notext -md sha256 \
 	-in $DIR/csr/$INTERMEDIATE_NAME.csr.pem \
@@ -67,6 +70,7 @@ cat $DIR/certs/$INTERMEDIATE_NAME.cert.pem \
 chmod 444 $DIR/certs/ca-chain.cert.pem
 
 # Create a blank CRL
+echo "You will be asked for the intermediate CA passphrase."
 openssl ca -config $DIR/openssl.cnf \
       -gencrl -out $DIR/crl/$INTERMEDIATE_NAME.crl.pem
 

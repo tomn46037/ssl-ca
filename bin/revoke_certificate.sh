@@ -22,10 +22,12 @@ if [ ! -f $DIR/certs/$NAME.cert.pem ]; then
 fi
 
 # Revoke the certificate
+echo "You will be asked for the intermediate CA passphrase"
 openssl ca -config $DIR/openssl.cnf \
       -revoke $DIR/certs/$NAME.cert.pem
 
 # Recrate the CRL
+echo "You will be asked for the intermediate CA passphrase"
 openssl ca -config $DIR/openssl.cnf \
       -gencrl -out $DIR/crl/$INTERMEDIATE_NAME.crl.pem
 
