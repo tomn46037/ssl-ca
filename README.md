@@ -8,7 +8,7 @@ They support revoking certificates.  For instance, you would use this to revoke 
 
 They are bascially taken directly from
 
-https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
+https://jamielinux.com/docs/openssl-certificate-authority/index.html
 
 That was a simple walk thorugh of how to creat your own SSL CA.  Go read 
 that as you work your way thorugh these scripts.
