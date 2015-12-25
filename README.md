@@ -15,7 +15,9 @@ that as you work your way thorugh these scripts.
 
 # Installation and Use
 
-1. Download the repo: `git clone git@github.com:tomn46037/ssl-ca.git`
+You shoud clone this into a specific directory based on the name of your root CA.
+
+1. Download the repo: `git clone git@github.com:tomn46037/ssl-ca.git NAME_OF_ROOT_CA`
 2. Review the openssl.cnf and openssl-intermediate-template.cnf files for their default certificate values
 2. Create the root ca: `bin/create_root.sh`
 3. Create at least one intermedaite certificate authority: `bin/create_intermedates.sh ServerIntermediate`
