@@ -18,7 +18,7 @@ that as you work your way thorugh these scripts.
 1. Download the repo: `git clone git@github.com:tomn46037/ssl-ca.git`
 2. Review the openssl.cnf and openssl-intermediate-template.cnf files for their default certificate values
 2. Create the root ca: `bin/create_root.sh`
-3. Create at least one intermedaite: `bin/create_intermedates.sh ServerIntermediate`
+3. Create at least one intermedaite certificate authority: `bin/create_intermedates.sh ServerIntermediate`
 4. Create your first certificate:  `bin/create_certificate.sh ServerIntermediate test usr_cert`
 
 You can create your own key and csr then copy that into the intermedaite/NAME/csrs directory then just run step 3.  If you run step three without a CSR, it will create a key for you.
